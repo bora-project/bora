@@ -15,5 +15,8 @@
     "url": "https://github.com/bora-project/bora/issues"
   },
   "homepage": "https://github.com/bora-project/bora#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
