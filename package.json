@@ -16,7 +16,9 @@
   },
   "homepage": "https://github.com/bora-project/bora#readme",
   "description": "",
-  "dependencies": {},
+  "dependencies": {
+    "cookie-parser": "^1.4.3"
+  },
   "devDependencies": {
     "express": "^4.16.3",
     "mongodb": "^3.0.7"
