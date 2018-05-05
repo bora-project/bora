@@ -1,0 +1,19 @@
+{
+  "name": "boraapp",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bora-project/bora.git"
+  },
+  "author": "Grupo HiNode.js",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bora-project/bora/issues"
+  },
+  "homepage": "https://github.com/bora-project/bora#readme",
+  "description": ""
+}
