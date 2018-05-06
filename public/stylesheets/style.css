@@ -57,6 +57,16 @@ body {
     box-shadow: 0 5px #ccc;
   }
 
+  .btn-slack:hover {
+    background-color: #ccc;
+  }
+
+  .btn-slack:active {
+    background-color: #ccc;
+    box-shadow: 0 2px #ccc;
+    transform: translateY(4px);
+  }
+
   .logotype {
     margin-top: -30px;
     margin-bottom: 60px;

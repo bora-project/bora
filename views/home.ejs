@@ -23,13 +23,15 @@
         <div class="card-timeline">
           <div class="row ">
             <div class="col-md-12 top-margin" >
-              <div >
+              <div>
+                <% if(events.length>0) { %>
+                <% for(var i=events.length-1; i>=0;i--) { %>
                 <ul class="timeline">
                   <li>
                     <i class="fa fa-at bg-blue"></i>
                     <div class="timeline-item">
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h3 class="timeline-header"><a href="#">Jogar Ping Pong as 14h</a> </h3>
+                      <h3 class="timeline-header"><a href="#"><%= events[i].action + " " +events[i].txt%></a> </h3>
                       <div class="timeline-body">
                         Ta suavão agora? Então aceita esse desafio ae!!
                       </div>
@@ -43,7 +45,11 @@
                     </div>
                   </li>
                 </ul>
+                <% } %>
               </div>
+              <% } else { %>
+                <div>No events found.</div>
+              <% } %>
             </div>
 
           </div>
@@ -142,6 +148,11 @@
 $(document).ready(function() {
   $('#example-getting-started').multiselect();
 });
+</script>
+<script>
+function createEvent() {
+    location.reload();
+}
 </script>
 </script>
 <script src="/bootstrap/js/bootstrap.js"></script>
