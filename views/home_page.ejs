@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bora</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+      <h3>Create workspaces</a></h3>
+      <form action="../save" method="post">
+        <table>
+	    	<tbody>
+	            <tr>
+	              <td>Name</td>
+	              <td><input type="text" name="name" /></td>
+	            </tr>
+	            <tr>
+	              <td>Address</td>
+	              <td><textarea name="address"></textarea></td>
+	            </tr>
+	            <tr>
+	              <td>Position</td>
+	              <td><input type="text" name="position" /></td>
+	            </tr>
+	            <tr>
+	              <td>Salary</td>
+	              <td><input type="number" name="salary" /></td>
+	            </tr>
+	            <tr>
+	              <td colspan="2"><button type="submit">Save</button></td>
+	            </tr>
+	          	</tbody>
+        	</table>
+		</form>
+      <% if(workspaces.length>0) { %>
+      <table class="list-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < workspaces.length;i++) { %>
+            <tr>
+              <td><%= workspaces[i].name%></td>
+              <td><%= workspaces[i].position%></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <div>No workspaces found.</div>
+      <% } %>
+    </div>
+  </body>
+</html>
