@@ -15,7 +15,11 @@ eventController.list = function(req, res) {
 };
 
 eventController.create = function(req, res) {
-  var params = message.parse(req.body.message);
+  eventController.create_internal(req.body.message);
+};
+
+eventController.create_internal = function(msg) {
+  var params = message.parse(msg);
 
   var newEvent = new Event(params);
 
