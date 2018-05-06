@@ -71,7 +71,7 @@ eventController.delete = function(req, res) {
     }
     else {
       console.log("event deleted!");
-      res.redirect("../");
+      res.redirect("/home");
     }
   });
 };

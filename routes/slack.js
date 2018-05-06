@@ -37,7 +37,7 @@ bora_answers = function(event, message) {
   })
   .catch(console.error);
 
-  eventController.create_internal(message, req.session.current_user);
+  eventController.create_internal(message, event.user);
 };
 
 slack_events.on('app_mention', function(event) {

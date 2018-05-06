@@ -4,6 +4,7 @@ var workspace = require("../controllers/index.js");
 var action = require("../controllers/ActionController.js");
 var event = require("../controllers/EventController.js");
 var Event = require("../models/Event");
+var Action = require("../models/Action");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -20,7 +21,14 @@ router.get('/home', function(req, res, next) {
       console.log("Error:", err);
     }
     else {
-      res.render("../views/home", {events: events, title: 'Bora', current_user: req.session.current_user });
+      Action.find({}).exec(function (err, actions) {
+        if (err) {
+          console.log("Error:", err);
+        }
+        else {
+          res.render("../views/home", {actions: actions, events: events, title: 'Bora', current_user: req.session.current_user });
+        }
+      });
     }
   });
 });
