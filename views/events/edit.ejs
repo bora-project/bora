@@ -1,0 +1,27 @@
+<h3><a href="/events">event List</a></h3>
+<h1>Edit event</h1>
+<form action="/events/update/<%= event._id%>" method="post">
+  <table>
+    <tbody>
+      <tr>
+        <td>Action</td>
+        <td><input type="text" name="action" value="<%= event.action %>" /></td>
+      </tr>
+      <tr>
+        <td>Date</td>
+        <td><input type="text" name="date" value="<%= event.date %>" /></td>
+      </tr>
+      <tr>
+        <td>Time</td>
+        <td><input type="text" name="time" value="<%= event.time %>" /></td>
+      </tr>
+      <tr>
+        <td>Text</td>
+        <td><input type="text" name="txt" value="<%= event.txt %>" /></td>
+      </tr>
+      <tr>
+        <td"><button type="submit">Update</button></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
