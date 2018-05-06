@@ -10,6 +10,7 @@ actionController.list = function(req, res) {
       console.log("Error:", err);
     }
     else {
+      console.log(actions);
       res.render("../views/actionView", {actions: actions});
     }
   });
