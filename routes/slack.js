@@ -18,12 +18,12 @@ router.get('/redirect', function(req, res, next) {
 
   web.oauth.access({ code: code, client_id: client_id, client_secret: client_secret })
   .then((result) => {
-    if (result.access_token == process.env.SLACK_OAUTH_ACCESS_TOKEN) {
+    // if (result.access_token == process.env.SLACK_OAUTH_ACCESS_TOKEN) {
       req.session.user_logged = true; // GENERATE_HASH_TOKEN
       res.redirect('/home');
-    } else {
-      res.redirect('/');
-    }
+    // } else {
+    //   res.redirect('/');
+    // }
   })
   .catch(console.error);
 });
