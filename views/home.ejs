@@ -23,13 +23,15 @@
         <div class="card-timeline">
           <div class="row ">
             <div class="col-md-12 top-margin" >
-              <div >
+              <div>
+                <% if(events.length>0) { %>
+                <% for(var i=events.length-1; i>=0;i--) { %>
                 <ul class="timeline">
                   <li>
                     <i class="fa fa-at bg-blue"></i>
                     <div class="timeline-item">
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h3 class="timeline-header"><a href="#">Jogar Ping Pong as 14h</a> </h3>
+                      <h3 class="timeline-header"><a href="#"><%= events[i].action + " " +events[i].txt%></a> </h3>
                       <div class="timeline-body">
                         Ta suavão agora? Então aceita esse desafio ae!!
                       </div>
@@ -43,13 +45,21 @@
                     </div>
                   </li>
                 </ul>
+                <% } %>
               </div>
+              <% } else { %>
+                <div>No events found.</div>
+              <% } %>
             </div>
 
           </div>
         </div>
       </div>
       <div class="col-md-4 side-menu">
+        <div class="card-ontype col-md-12">
+          <h4><i class="fas fa-share-alt-square"></i> Criar evento</h4>
+          <%- include ./events/_messageBox %>
+        </div>
         <div class="card-ranking col-md-12">
           <h4><i class="fas fa-trophy"></i> Ranking</h4>
           <div class="content-slider">
@@ -60,13 +70,13 @@
                     <div class="quote">1º Ping-pong: Raphael</div>
                   </li>
                   <li class="anim2">
-                    <div class="quote">1º Mortal Kombat: Raphael</div>
+                    <div class="quote">1º Mortal Kombat: Tomino</div>
                   </li>
                   <li class="anim3">
-                    <div class="quote">1º Bilhar: Raphael</div>
+                    <div class="quote">1º Bilhar: Carlos</div>
                   </li>
                   <li class="anim4">
-                    <div class="quote">1º Tobogã: Raphael</div>
+                    <div class="quote">1º Tobogã: Robisnei</div>
                   </li>
                   <li class="anim5">
                     <div class="quote">1º Competição de cerveja: Raphael</div>
@@ -76,13 +86,9 @@
             </div>
           </div>
         </div>
-        <div class="card-ontype col-md-12">
-          <h4><i class="fas fa-share-alt-square"></i> Criar evento</h4>
-          <%- include ./events/_messageBox %>
-        </div>
         <div class="card-actions col-md-12">
           <h4><i class="fas fa-star"></i> Ações</h4>
-          <p>Melhor no pingpong Usuário whataver</p>
+
         </div>
       </div>
     </div>
@@ -142,6 +148,11 @@
 $(document).ready(function() {
   $('#example-getting-started').multiselect();
 });
+</script>
+<script>
+function createEvent() {
+    location.reload();
+}
 </script>
 </script>
 <script src="/bootstrap/js/bootstrap.js"></script>

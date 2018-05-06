@@ -9,7 +9,8 @@ router.get('/', event.list);
 router.post('/create', event.create);
 
 router.get('/create', function(req, res, next) {
-	res.render('events/_messageBox');
+		res.render('events/_messageBox');
+		res.redirect('/home');
 });
 
 // Edit event

@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var workspace = require("../controllers/index.js");
+var action = require("../controllers/ActionController.js");
+var event = require("../controllers/EventController.js");
+var Event = require("../models/Event");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -12,11 +15,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/home', function(req, res, next) {
-  if (req.session.user_logged) {
-    res.render('home', { title: 'Bora' });
-    return;
-  }
-  res.redirect('/');
+  Event.find({}).exec(function (err, events) {
+    if (err) {
+      console.log("Error:", err);
+    }
+    else {
+      res.render("../views/home", {events: events, title: 'Bora'});
+    }
+  });
 });
 
 router.get('/logout', function(req, res) {
