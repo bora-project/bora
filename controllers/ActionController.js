@@ -76,7 +76,7 @@ actionController.update = function(req, res) {
       console.log(err);
       res.render("../views/actions/edit/" + String(req.params.id), {action: req.body});
     }
-    res.redirect("../");
+    res.redirect("/home");
   });
 };
 
@@ -87,7 +87,7 @@ actionController.delete = function(req, res) {
     }
     else {
       console.log("action deleted!");
-      res.redirect("../");
+      res.redirect("/home");
     }
   });
 };

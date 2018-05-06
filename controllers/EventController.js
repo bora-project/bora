@@ -60,7 +60,18 @@ eventController.update = function(req, res) {
       console.log(err);
       res.render("../views/events/edit", {event: req.body});
     }
-    res.redirect("../");
+    res.redirect("/home");
+  });
+};
+
+// Update an event
+eventController.subscribe = function(req, res) {
+  Event.findByIdAndUpdate(req.params.id, { $push: { followers: req.session.current_user }}, { new: true }, function (err, event) {
+    if (err) {
+      console.log(err);
+      res.render("../views/events/edit", {event: req.body});
+    }
+    res.redirect("/home");
   });
 };
 

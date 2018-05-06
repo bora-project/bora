@@ -90,7 +90,7 @@ userController.updateInterests = function(req, res) {
       res.redirect("/myactions/" + redirect);
     }
     console.log(user);
-    res.redirect("../../");
+    res.redirect("/home");
   });
 };
 
@@ -101,7 +101,7 @@ userController.delete = function(req, res) {
     }
     else {
       console.log("user deleted!");
-      res.redirect("../");
+      res.redirect("/home");
     }
   });
 };
