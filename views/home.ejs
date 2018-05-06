@@ -30,7 +30,11 @@
                   <li>
                     <i class="fa fa-at bg-blue"></i>
                     <div class="timeline-item">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <% if (current_user == events[i].owner) { %>
+                      <form method="post" action="/events/delete/<%= events[i]._id %>">
+                        <button type="submit" class="close" data-dismiss="modal" onclick="">&times;</button>
+                        </form>
+                      <% }%>
                       <h3 class="timeline-header"><a href="#"><%= events[i].action + " " +events[i].txt%></a> </h3>
                       <div class="timeline-body">
                         Ta suavão agora? Então aceita esse desafio ae!!
@@ -90,6 +94,9 @@
         </div>
         <div class="card-actions col-md-12">
           <h4><i class="fas fa-star"></i> Principais Ações</h4>
+          <% for(var i=actions.length-1; i>=0;i--) { %>
+            <h3><%= actions[i].name %></h3>
+          <% } %>
         </div>
       </div>
     </div>
