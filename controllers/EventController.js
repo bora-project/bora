@@ -15,11 +15,12 @@ eventController.list = function(req, res) {
 };
 
 eventController.create = function(req, res) {
-  eventController.create_internal(req.body.message);
+  eventController.create_internal(req.body.message, req.session.current_user);
 };
 
-eventController.create_internal = function(msg) {
+eventController.create_internal = function(msg, user) {
   var params = message.parse(msg);
+  params["owner"] = user;
 
   var newEvent = new Event(params);
 

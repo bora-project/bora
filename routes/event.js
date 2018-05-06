@@ -6,7 +6,7 @@ var event = require("../controllers/EventController.js");
 router.get('/', event.list);
 
 // create event
-router.post('/create', event.create);
+router.post('/create/', event.create);
 
 router.get('/create', function(req, res, next) {
 		res.render('events/_messageBox');

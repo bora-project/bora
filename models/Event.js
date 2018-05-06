@@ -6,6 +6,7 @@ var EventSchema = new mongoose.Schema({
   time: String,
   txt: String,
   followers: Array,
+  owner: String,
   updated_at: { type: Date, default: Date.now },
 });
 
