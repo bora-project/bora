@@ -1,0 +1,66 @@
+<div>
+    <form action="../workspace/save" method="post">
+        <table>
+            <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td><input type="text" name="name" /></td>
+                </tr>
+                <tr>
+                  <td>actions</td>
+                  <td><textarea name="actions"></textarea></td>
+                </tr>
+                <tr>
+                  <td>users</td>
+                  <td><input type="text" name="users" /></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><button type="submit">Save</button></td>
+                </tr>
+                </tbody>
+            </table>
+    </form>
+        <form action="../workspace/edit" method="post">
+        <table>
+            <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td><input type="text" name="name" /></td>
+                </tr>
+                <tr>
+                  <td>actions</td>
+                  <td><textarea name="actions"></textarea></td>
+                </tr>
+                <tr>
+                  <td>users</td>
+                  <td><input type="text" name="users" /></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><button type="submit">Edit</button></td>
+                </tr>
+                </tbody>
+            </table>
+    </form>
+    <% if(workspaces.length>0) { %>
+      <table class="list-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < workspaces.length;i++) { %>
+            <tr>
+              <td><%= workspaces[i].name%></td>
+              <td><%= workspaces[i].actions%></td>
+              <td><%= workspaces[i].users%></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <div>No workspace found.</div>
+      <% } %>
+</div>
+

@@ -1,0 +1,66 @@
+<div>
+    <form action="../users/save" method="post">
+        <table>
+            <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td><input type="text" name="name" /></td>
+                </tr>
+                <tr>
+                  <td>Actions</td>
+                  <td><textarea name="actions"></textarea></td>
+                </tr>
+                <tr>
+                  <td>workspace</td>
+                  <td><input type="text" name="workspace" /></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><button type="submit">Save</button></td>
+                </tr>
+                </tbody>
+            </table>
+    </form>
+        <form action="../users/edit" method="post">
+        <table>
+            <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td><input type="text" name="name" /></td>
+                </tr>
+                <tr>
+                  <td>Actions</td>
+                  <td><textarea name="actions"></textarea></td>
+                </tr>
+                <tr>
+                  <td>workspace</td>
+                  <td><input type="text" name="workspace" /></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><button type="submit">Edit</button></td>
+                </tr>
+                </tbody>
+            </table>
+    </form>
+    <% if(users.length>0) { %>
+      <table class="list-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < users.length;i++) { %>
+            <tr>
+              <td><%= users[i].name%></td>
+              <td><%= users[i].actions%></td>
+              <td><%= users[i].workspace%></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <div>No users found.</div>
+      <% } %>
+</div>
+

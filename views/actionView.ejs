@@ -1,0 +1,66 @@
+<div>
+    <form action="../actions/save" method="post">
+        <table>
+            <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td><input type="text" name="actions_name" /></td>
+                </tr>
+                <tr>
+                  <td>Address</td>
+                  <td><textarea name="users"></textarea></td>
+                </tr>
+                <tr>
+                  <td>Position</td>
+                  <td><input type="text" name="ranking" /></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><button type="submit">Save</button></td>
+                </tr>
+                </tbody>
+            </table>
+    </form>
+        <form action="../actions/edit" method="post">
+        <table>
+            <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td><input type="text" name="actions_name" /></td>
+                </tr>
+                <tr>
+                  <td>Address</td>
+                  <td><textarea name="users"></textarea></td>
+                </tr>
+                <tr>
+                  <td>Position</td>
+                  <td><input type="text" name="ranking" /></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><button type="submit">Edit</button></td>
+                </tr>
+                </tbody>
+            </table>
+    </form>
+    <% if(actions.length>0) { %>
+      <table class="list-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < actions.length;i++) { %>
+            <tr>
+              <td><%= actions[i].actions_name%></td>
+              <td><%= actions[i].users%></td>
+              <td><%= actions[i].ranking%></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <div>No actions found.</div>
+      <% } %>
+</div>
+
