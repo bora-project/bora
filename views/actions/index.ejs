@@ -1,0 +1,33 @@
+<h3><a href="/actions/create">Create Action</a></h3>
+<h1>actions List</h1>
+<% if(actions.length>0) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Name</th>
+        <th>Users</th>
+        <th>Ranked?</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% for(var i=0; i<actions.length;i++) { %>
+        <tr>
+          <td><a href="/actions/edit/<%= actions[i]._id%>">Edit</a></td>
+          <td>
+            <form action="/actions/delete/<%= actions[i]._id%>" method="post">
+              <button type="submit" href="">Delete</button>
+            </form>
+          </td>
+          <td><%= actions[i].name%></td>
+          <td><% for(var j=0; j < actions[j].users.length;j++) { %><%= actions[i].users[j].name%> <% } %></td>
+          <td><%= actions[i].ranked%></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+<% } else { %>
+  <div>No actions found.</div>
+<% } %>

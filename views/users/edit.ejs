@@ -1,0 +1,25 @@
+<h3><a href="/users">user List</a></h3>
+<h1>Edit user</h1>
+<form action="/users/update/<%= user._id%>" method="post">
+  <table>
+    <tbody>
+      <tr>
+        <td>name</td>
+        <td><input type="text" name="name" value="<%= user.name %>" /></td>
+      </tr>
+      <tr>
+        <td>slack_id</td>
+        <td><input type="text" name="slack_id" value="<%= user.slack_id %>" /></td>
+      </tr>
+        <td>Interesses</td>
+        <td><a href="/users/myactions/<%= user._id%>">Editar preferências</a></td>
+      <tr>
+        <td>Text</td>
+        <td><input type="text" name="workspace" value="<%= user.workspace %>" /></td>
+      </tr>
+      <tr>
+        <td"><button type="submit">Update</button></td>
+      </tr>
+    </tbody>
+  </table>
+</form>

@@ -6,12 +6,16 @@ var actions = require("../controllers/ActionController.js");
 // Get all userss
 router.get('/', users.list);
 
+router.get('/myactions/:id', actions.search);
+router.post('/myactions/save/:userid', function(req, res) {
+  users.updateInterests(req, res);
+});
+
 // create users
 router.post('/create', users.create);
 
 router.get('/create', function(req, res, next) {
-	var data = actions.search();
-	res.render('users/create', { actions: data });
+	res.render('users/create');
 });
 
 // Edit users

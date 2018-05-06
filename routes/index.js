@@ -4,6 +4,7 @@ var workspace = require("../controllers/index.js");
 var action = require("../controllers/ActionController.js");
 var event = require("../controllers/EventController.js");
 var Event = require("../models/Event");
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if (req.session.user_logged) {
@@ -22,10 +23,6 @@ router.get('/home', function(req, res, next) {
       res.render("../views/home", {events: events, title: 'Bora'});
     }
   });
-});
-
-router.post('/save/', function(req, res) {
-  workspace.save(req, res);
 });
 
 router.get('/logout', function(req, res) {

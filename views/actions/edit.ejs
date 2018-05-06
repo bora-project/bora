@@ -1,0 +1,19 @@
+<h3><a href="/actions">action List</a></h3>
+<h1>Edit action</h1>
+<form action="/actions/update/<%= action._id%>" method="post">
+  <table>
+    <tbody>
+      <tr>
+        <td>Action</td>
+        <td><label type="text" name="name" value="<%= action.name %>" /></label></td>
+      </tr>
+      <tr>
+        <td>Ranked?</td>
+        <td><input type="checkbox" name="ranked" checked="<%= action.ranked %>" /> Ranked?</td>
+      </tr>
+      <tr>
+        <td"><button type="submit">Update</button></td>
+      </tr>
+    </tbody>
+  </table>
+</form>

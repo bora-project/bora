@@ -17,9 +17,9 @@ userController.list = function(req, res) {
 userController.create = function(req, res) {
   var params = {
                   "name": req.body["name"],
-                  "slack_id": "",
+                  "slack_id": req.body["slack_id"],
                   "actions": [],
-                  "workspace": ""
+                  "workspace": req.body["workspace"]
                 }
 
   var newUsers = new Users(params);
@@ -47,7 +47,6 @@ userController.edit = function(req, res) {
 
 // Update an user
 userController.update = function(req, res) {
-  console.log(req.body)
   if (req.body["ranked"] == "on") {
     req.body["ranked"] = true;
   }
@@ -60,6 +59,26 @@ userController.update = function(req, res) {
       res.render("../views/users/edit/" + String(req.params.id), {user: req.body});
     }
     res.redirect("../");
+  });
+};
+
+// Update an user
+userController.updateInterests = function(req, res) {
+  var actions = [];
+  for (var key in req.body) {
+    if (req.body[key] == "on") {
+      actions.push(key);
+    }
+  }
+
+  console.log(req.params);
+  Users.findByIdAndUpdate(req.params.userid, { $set: { actions: actions }}, { new: true }, function (err, user) {
+    if (err) {
+      console.log(err);
+      res.redirect("/myactions/" + redirect);
+    }
+    console.log(user);
+    res.redirect("../../");
   });
 };
 
