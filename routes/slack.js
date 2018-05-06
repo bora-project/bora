@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var eventController = require("../controllers/EventController.js");
 
 const { WebClient } = require('@slack/client');
 const access_token = process.env.SLACK_OAUTH_ACCESS_TOKEN;
@@ -16,6 +17,8 @@ bora_answers = function(event) {
     console.log('Message sent: ', res.ts);
   })
   .catch(console.error);
+
+  eventController.create_internal(event.text);
 };
 
 slack_events.on('app_mention', bora_answers);
