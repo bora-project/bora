@@ -33,7 +33,7 @@
                       <% if (current_user == events[i].owner) { %>
                       <form method="post" action="/events/delete/<%= events[i]._id %>">
                         <button type="submit" class="close" data-dismiss="modal" onclick="">&times;</button>
-                        </form>
+                      </form>
                       <% }%>
                       <h3 class="timeline-header"><a href="#"><%= events[i].action + " " +events[i].txt%></a> </h3>
                       <div class="timeline-body">
@@ -43,7 +43,11 @@
                         <div class="flex-container">
                           <% if (current_user != events[i].owner) { %>
                             <div class="row">
-                              <a class="btn btn-bora">Bora!</a>
+                              <form method="post" action="/events/subscribe/<%= events[i]._id %>">
+                                <button type="submit" class="btn btn-bora" data-dismiss="modal" onclick="">
+                                  Bora!
+                                </button>
+                              </form>
                             </div>
                           <% }%>
                         </div>

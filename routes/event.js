@@ -24,6 +24,11 @@ router.post('/update/:id', function(req, res) {
 });
 
 // Edit update
+router.post('/subscribe/:id', function(req, res) {
+  event.update(req, res);
+});
+
+// Edit update
 router.post('/delete/:id', function(req, res, next) {
   event.delete(req, res);
 });
