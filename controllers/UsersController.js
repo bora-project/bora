@@ -17,9 +17,10 @@ userController.list = function(req, res) {
 userController.create = function(req, res) {
   var params = {
                   "name": req.body["name"],
-                  "slack_id": req.body["slack_id"],
+                  "slack_id": req.session.current_user,
                   "actions": [],
-                  "workspace": req.body["workspace"]
+                  "workspace": req.body["workspace"],
+                  "events": []
                 }
 
   var newUsers = new Users(params);
@@ -54,6 +55,17 @@ userController.update = function(req, res) {
     req.body["ranked"] = false;
   }
   Users.findByIdAndUpdate(req.params.id, { $set: { ranked: req.body.ranked }}, { new: true }, function (err, user) {
+    if (err) {
+      console.log(err);
+      res.render("../views/users/edit/" + String(req.params.id), {user: req.body});
+    }
+    res.redirect("../");
+  });
+};
+
+// Update an user (add event)
+userController.updateEvents = function(user, event_id) {
+  Users.findByIdAndUpdate( user , { $push: event_id }, { new: true }, function (err, user) {
     if (err) {
       console.log(err);
       res.render("../views/users/edit/" + String(req.params.id), {user: req.body});

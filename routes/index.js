@@ -20,7 +20,7 @@ router.get('/home', function(req, res, next) {
       console.log("Error:", err);
     }
     else {
-      res.render("../views/home", {events: events, title: 'Bora'});
+      res.render("../views/home", {events: events, title: 'Bora', current_user: req.session.current_user });
     }
   });
 });
