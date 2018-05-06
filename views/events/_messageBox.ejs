@@ -1,0 +1,23 @@
+<div class="form-event">
+	<input id="messageInput" type="text" name="message" placeholder="@bora SOS javascript">
+
+	<script src="/js/jquery-3.3.1.js"></script>
+	<script type="text/javascript">
+		$('#messageInput').keypress(function (e) {
+			if(e.keyCode == 13){
+				var msg = $('#messageInput').serialize();
+
+				jQuery.ajax({
+					type: "POST",
+					url: "/event/create",
+					data: msg,
+					success: function()
+					{
+					}
+				});
+
+				return false;
+			}
+		});
+	</script>
+</div>
