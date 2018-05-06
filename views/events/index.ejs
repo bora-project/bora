@@ -4,6 +4,8 @@
   <table>
     <thead>
       <tr>
+        <th>Edit</th>
+        <th>Delete</th>
         <th>Action</th>
         <th>What else</th>
         <th>Date</th>
@@ -14,6 +16,12 @@
 
       <% for(var i=0; i<events.length;i++) { %>
         <tr>
+          <td><a href="/events/edit/<%= events[i]._id%>">Edit</a></td>
+          <td>
+            <form action="/events/delete/<%= events[i]._id%>" method="post">
+              <button type="submit" href="">Delete</button>
+            </form>
+          </td>
           <td><%= events[i].action%></a></td>
           <td><%= events[i].txt%></a></td>
           <td><%= events[i].date%></td>

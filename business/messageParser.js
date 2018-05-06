@@ -24,6 +24,14 @@ function getTime() {
 	var hh = now.getHours();
 	var mm = now.getMinutes();
 
+	if(hh.length == 1) {
+		hh = '0' + hh
+	}
+
+	if(mm.length == 1) {
+		mm = '0' + mm
+	}
+
 	now = hh + ':' + mm;
 
 	return now;
@@ -39,7 +47,8 @@ messageParams.parse = function(inputMsg) {
 					"action": msg[commandIndex],
 					"date": getToday(),
 					"time": getTime(),
-					"txt": ""
+					"txt": "",
+					"followers": []
 				};
 
 	var timeRegex = /^([0-9]|0[0-9]|1[0-9]|2[0-3])(?:(?:h|:)([0-5][0-9])?)?$/;
