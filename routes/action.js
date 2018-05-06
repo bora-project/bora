@@ -1,17 +1,17 @@
 var express = require('express');
 var router = express.Router();
-var users = require("../controllers/UsersController.js");
+var action = require("../controllers/ActionController.js");
 
 router.get('/', function(req, res) {
-  users.list(req, res);
+  action.list(req, res);
 });
 
 router.post('/save', function(req, res) {
-  users.save(req, res);
+  action.save(req, res);
 });
 
 router.post('/edit', function(req, res) {
-  users.edit(req, res);
+  action.edit(req, res);
 });
 
 module.exports = router;
