@@ -37,9 +37,11 @@
                       </div>
                       <div class='timeline-footer inline-block'>
                         <div class="flex-container">
-                          <div class="row">
-                            <a class="btn btn-bora">Bora!</a>
-                          </div>
+                          <% if (current_user != events[i].owner) { %>
+                            <div class="row">
+                              <a class="btn btn-bora">Bora!</a>
+                            </div>
+                          <% }%>
                         </div>
                       </div>
                     </div>
