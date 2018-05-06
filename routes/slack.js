@@ -24,9 +24,9 @@ slack_events.on('message', function(event){
   if (event.user === undefined)
     return;
 
-  if (event.channel[0] != 'D')
+  if (event.text.split(" ")[0].toLowerCase() != 'bora')
     return;
-
+  
   bora_answers(event);
 });
 
