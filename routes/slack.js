@@ -10,6 +10,23 @@ const create_slack_event_adapter = require('@slack/events-api').createSlackEvent
 const slack_events = create_slack_event_adapter(process.env.SLACK_VERIFICATION_TOKEN);
 
 router.post('/event_api', slack_events.expressMiddleware());
+router.get('/redirect', function(req, res, next) {
+  var code = req.query.code;
+  var client_id = process.env.CLIENT_ID;
+  var client_secret = process.env.CLIENT_SECRET;
+  var redirect_url = '/slack/redirect';
+
+  web.oauth.access({ code: code, client_id: client_id, client_secret: client_secret })
+  .then((res) => {
+    console.log('O TOKEN: ', res.access_token);
+    console.log(res.access_token == process.env.SLACK_OAUTH_ACCESS_TOKEN);
+    console.log(res);
+  })
+  .catch(console.error);
+
+  res.status(200);
+  res.send('OK');
+});
 
 bora_answers = function(event, message) {
   web.chat.postMessage({ as_user: false, channel: event.channel, text: `Bora lá, <@${event.user}>`})
