@@ -43,7 +43,6 @@ body {
   }
 
   .btn-slack {
-    border-radius: 20px;
     display: inline-block;
     padding: 15px 25px;
     font-size: 18px;
@@ -55,7 +54,6 @@ body {
     color: #455A64;
     background-color: #fff;
     border: none;
-    border-radius: 15px;
     box-shadow: 0 5px #ccc;
   }
 
@@ -101,7 +99,6 @@ body {
     color: #fff;
     background-color: #25C27D;
     border: none;
-    border-radius: 15px;
     box-shadow: 0 5px #0b8950;
   }
 
