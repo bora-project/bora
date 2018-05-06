@@ -1,45 +1,78 @@
 var mongoose = require("mongoose");
 var Users = require("../models/Users");
-var usersController = {};
+var Actions = require("../models/Users");
+var userController = {};
 
-
-//read list off Users
-usersController.list = function(req, res) {
+userController.list = function(req, res) {
   Users.find({}).exec(function (err, users) {
     if (err) {
       console.log("Error:", err);
     }
     else {
-      res.render("../views/usersView", {users: users});
+      res.render("../views/users/index", {users: users});
     }
   });
 };
 
-usersController.save = function(req, res) {
-  var users = new Users(req.body);
-  users.save(function(err) {
+userController.create = function(req, res) {
+  var params = {
+                  "name": req.body["name"],
+                  "slack_id": "",
+                  "actions": [],
+                  "workspace": ""
+                }
+
+  var newUsers = new Users(params);
+
+  newUsers.save(function(err) {
     if(err) {
       console.log(err);
-      res.render("../views/usersView");
     } else {
-      console.log("Successfully created an action.");
-      res.redirect("../users");
+      console.log("Successfully created an user!");
     }
   });
 };
 
-usersController.edit = function(req, res) {
-  Users.updateOne({name: req.body.name}, req.body, function (err, users) {
+// Edit an user
+userController.edit = function(req, res) {
+  Users.findOne({_id: req.params.id}).exec(function (err, user) {
     if (err) {
       console.log("Error:", err);
     }
     else {
-      console.log(res);
-      res.redirect("../users");
+      res.render("../views/users/edit", {user: user});
     }
   });
 };
 
+// Update an user
+userController.update = function(req, res) {
+  console.log(req.body)
+  if (req.body["ranked"] == "on") {
+    req.body["ranked"] = true;
+  }
+  else {
+    req.body["ranked"] = false;
+  }
+  Users.findByIdAndUpdate(req.params.id, { $set: { ranked: req.body.ranked }}, { new: true }, function (err, user) {
+    if (err) {
+      console.log(err);
+      res.render("../views/users/edit/" + String(req.params.id), {user: req.body});
+    }
+    res.redirect("../");
+  });
+};
 
+userController.delete = function(req, res) {
+  Users.remove({_id: req.params.id}, function(err) {
+    if(err) {
+      console.log(err);
+    }
+    else {
+      console.log("user deleted!");
+      res.redirect("../");
+    }
+  });
+};
 
-module.exports = usersController;
+module.exports = userController;

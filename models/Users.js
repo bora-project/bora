@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 var UsersSchema = new mongoose.Schema({
   name: String,
-  actions: String,
+  slack_id: String,
+  actions: Array,
   workspace: String
 });
 

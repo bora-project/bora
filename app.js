@@ -6,9 +6,6 @@ var path = require('path');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/product')
   .then(() =>  console.log('connection succesful'))
@@ -17,13 +14,9 @@ mongoose.connect('mongodb://localhost/product')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var slackRouter = require('./routes/slack');
-
 var actionRouter = require('./routes/action');
 var workspaceRouter = require('./routes/workspace');
-
-
 var msgRouter   = require('./routes/event');
-
 
 var app = express();
 
