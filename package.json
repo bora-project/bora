@@ -17,6 +17,7 @@
   "homepage": "https://github.com/bora-project/bora#readme",
   "description": "",
   "dependencies": {
+    "@slack/client": "^4.2.0",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
