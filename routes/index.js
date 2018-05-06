@@ -24,6 +24,9 @@ router.post('/save/', function(req, res) {
   workspace.save(req, res);
 });
 
-
+router.get('/logout', function(req, res) {
+  req.session.user_logged = undefined;
+  res.redirect('/');
+});
 
 module.exports = router;

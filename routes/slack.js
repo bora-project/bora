@@ -29,7 +29,7 @@ router.get('/redirect', function(req, res, next) {
 });
 
 bora_answers = function(event, message) {
-  web.chat.postMessage({ as_user: false, channel: event.channel, text: `Bora lá, <@${event.user}>`})
+  web.chat.postMessage({ as_user: false, channel: event.channel, text: `Bora lá, <@${event.user}>` })
   .then((res) => {
     console.log('Message sent: ', res.ts);
   })
