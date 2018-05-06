@@ -3,13 +3,18 @@ var Event = require("../models/Event");
 var message = require("../business/messageParser");
 var eventController = {};
 
-// eventController.create = function(req, res) {
-//   res.render("../views/_messageBox");
-// };
+eventController.list = function(req, res) {
+  Event.find({}).exec(function (err, events) {
+    if (err) {
+      console.log("Error:", err);
+    }
+    else {
+      res.render("../views/events", {events: events});
+    }
+  });
+};
 
 eventController.create = function(req, res) {
-  // console.log(req.body.message);
-
   var params = message.parse(req.body.message);
 
   var newEvent = new Event(params);
@@ -21,7 +26,6 @@ eventController.create = function(req, res) {
       console.log("Successfully created an event!");
     }
   });
-
 
   console.log(params);
 };

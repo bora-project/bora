@@ -31,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/slack', slackRouter);
 app.use('/event', msgRouter);
+app.use('/events', msgRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,7 +1,10 @@
 var mongoose = require('mongoose');
 
 var EventSchema = new mongoose.Schema({
-  name: String,
+  action: String,
+  date: String,
+  time: String,
+  txt: String,
   updated_at: { type: Date, default: Date.now },
 });
 
