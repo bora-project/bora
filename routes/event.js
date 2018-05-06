@@ -10,7 +10,7 @@ router.post('/create/', event.create);
 
 router.get('/create', function(req, res, next) {
 		res.render('events/_messageBox');
-		res.redirect('/home');
+		// res.redirect('/home');
 });
 
 // Edit event

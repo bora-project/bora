@@ -2,6 +2,7 @@ var mongoose = require("mongoose");
 var Event = require("../models/Event");
 var message = require("../business/messageParser");
 var eventController = {};
+var usersController = require("../controllers/UsersController.js");
 
 eventController.list = function(req, res) {
   Event.find({}).exec(function (err, events) {
@@ -9,6 +10,7 @@ eventController.list = function(req, res) {
       console.log("Error:", err);
     }
     else {
+      console.log(events);
       res.render("../views/events/index", {events: events});
     }
   });
@@ -20,6 +22,8 @@ eventController.create = function(req, res) {
 
 eventController.create_internal = function(msg, user) {
   var params = message.parse(msg);
+  // var owner = Users.find({"slack_id": user});
+  // console.log(params);
   params["owner"] = user;
 
   var newEvent = new Event(params);
@@ -31,6 +35,8 @@ eventController.create_internal = function(msg, user) {
       console.log("Successfully created an event!");
     }
   });
+
+  // usersController.updateEvents(params["owner"], newEvent._id);
 
   console.log(params);
 };
