@@ -14,6 +14,7 @@ mongoose.connect('mongodb://localhost/product')
 
 var usersRouter = require('./routes/users');
 var slackRouter = require('./routes/slack');
+var actionRouter = require('./routes/action')
 
 
 var app = express();
@@ -29,6 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/actions', actionRouter);
 app.use('/slack', slackRouter);
 
 // catch 404 and forward to error handler
