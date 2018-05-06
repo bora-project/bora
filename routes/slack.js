@@ -10,13 +10,9 @@ const slack_events = create_slack_event_adapter(process.env.SLACK_VERIFICATION_T
 
 router.post('/event_api', slack_events.expressMiddleware());
 
-slack_events.on('message', function(event){
-  if (event.user === undefined)
-    return;
-
-  console.log(`Bora recebeu uma mensagem: de @${event.user} em #${event.channel}`);
-  console.log(`>>> ${event.text}`);
-  web.chat.postMessage({ as_user: false, channel: event.channel, text: `Daora, você me disse: ${event.text}...\nOque isso quer dizer?` })
+slack_events.on('app_mention', function(event) {
+  console.log('Que isso!');
+  web.chat.postMessage({ as_user: false, channel: event.channel, text: `Bora lá, <@${event.user}>`})
   .then((res) => {
     console.log('Message sent: ', res.ts);
   })
