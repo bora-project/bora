@@ -1,6 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
+const { WebClient } = require('@slack/client');
+const access_token = process.env.SLACK_OAUTH_ACCESS_TOKEN;
+
+const web = new WebClient(access_token);
+
 /* Respond Slack with challenge paramenter. */
 router.post('/challenge', function (req, res, next) {
   if (req.body.token != process.env.SLACK_VERIFICATION_TOKEN) {
