@@ -20,6 +20,8 @@ router.get('/redirect', function(req, res, next) {
   .then((result) => {
     // if (result.access_token == process.env.SLACK_OAUTH_ACCESS_TOKEN) {
       req.session.user_logged = true; // GENERATE_HASH_TOKEN
+      req.session.current_user = result.user.id;
+      // req.session.current_user = result
       res.redirect('/home');
     // } else {
     //   res.redirect('/');
