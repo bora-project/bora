@@ -1,45 +1,45 @@
 var mongoose = require("mongoose");
-var Action = require("../models/Action");
-var actionController = {};
+var Users = require("../models/Users");
+var usersController = {};
 
 
-//read list off Actions
-actionController.list = function(req, res) {
-  Action.find({}).exec(function (err, actions) {
+//read list off Users
+usersController.list = function(req, res) {
+  Users.find({}).exec(function (err, users) {
     if (err) {
       console.log("Error:", err);
     }
     else {
-      res.render("../views/actionView", {actions: actions});
+      res.render("../views/usersView", {users: users});
     }
   });
 };
 
-actionController.save = function(req, res) {
-  var action = new Action(req.body);
-  action.save(function(err) {
+usersController.save = function(req, res) {
+  var users = new Users(req.body);
+  users.save(function(err) {
     if(err) {
       console.log(err);
-      res.render("../views/actionView");
+      res.render("../views/usersView");
     } else {
       console.log("Successfully created an action.");
-      res.redirect("../actions");
+      res.redirect("../users");
     }
   });
 };
 
-actionController.edit = function(req, res) {
-  Action.updateOne({actions_name: req.body.actions_name}, req.body, function (err, actions) {
+usersController.edit = function(req, res) {
+  Users.updateOne({name: req.body.name}, req.body, function (err, users) {
     if (err) {
       console.log("Error:", err);
     }
     else {
       console.log(res);
-      res.redirect("../actions");
+      res.redirect("../users");
     }
   });
 };
 
 
 
-module.exports = actionController;
+module.exports = usersController;

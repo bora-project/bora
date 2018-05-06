@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/product')
   .then(() =>  console.log('connection succesful'))
@@ -14,7 +15,8 @@ mongoose.connect('mongodb://localhost/product')
 
 var usersRouter = require('./routes/users');
 var slackRouter = require('./routes/slack');
-var actionRouter = require('./routes/action')
+var actionRouter = require('./routes/action');
+var workspaceRouter = require('./routes/workspace');
 
 
 var app = express();
@@ -31,7 +33,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/actions', actionRouter);
+app.use('/users', usersRouter);
 app.use('/slack', slackRouter);
+app.use('/workspace', workspaceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

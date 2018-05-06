@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
-var ActionsSchema = new mongoose.Schema({
-  actions_name: String,
-  users: String,
-  ranking: Boolean
+var UsersSchema = new mongoose.Schema({
+  name: String,
+  actions: String,
+  workspace: String
 });
 
-module.exports = mongoose.model('Actions', ActionsSchema);
+module.exports = mongoose.model('Users', UsersSchema);
