@@ -41,13 +41,17 @@
                       </div>
                       <div class='timeline-footer inline-block'>
                         <div class="flex-container">
-                          <% if ((current_user != events[i].owner) && (events[i].followers.indexOf(current_user) < 0)) { %>
+                          <% if (current_user != events[i].owner) { %>
                             <div class="row">
-                              <form method="post" action="/events/subscribe/<%= events[i]._id %>">
-                                <button type="submit" class="btn btn-bora" data-dismiss="modal" onclick="">
-                                  Bora!
-                                </button>
-                              </form>
+                              <% if (events[i].followers.indexOf(current_user) < 0) { %>
+                                <form method="post" action="/events/subscribe/<%= events[i]._id %>">
+                                  <button type="submit" class="btn btn-bora" data-dismiss="modal" onclick="">
+                                    Bora!
+                                  </button>
+                                </form>
+                              <% } else { %>
+                                  <label class="btn btn-info">Voce deu match neste evento!</label>
+                              <% } %>
                             </div>
                           <% }%>
                         </div>
@@ -56,10 +60,17 @@
                   </li>
                 </ul>
                 <% } %>
-              </div>
               <% } else { %>
-                <div>No events found.</div>
+                <ul class="timeline">
+                  <li>
+                    <i class="fa fa-at bg-blue"></i>
+                    <div class="timeline-item">
+                      <h3 class="timeline-header">Não há eventos registrados no momento :(</h3>
+                    </div>
+                  </li>
+                </ul>
               <% } %>
+              </div>
             </div>
 
           </div>
