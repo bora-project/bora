@@ -25,7 +25,7 @@ router.post('/update/:id', function(req, res) {
 
 // Edit update
 router.post('/subscribe/:id', function(req, res) {
-  event.update(req, res);
+  event.subscribe(req, res);
 });
 
 // Edit update

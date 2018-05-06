@@ -41,7 +41,7 @@
                       </div>
                       <div class='timeline-footer inline-block'>
                         <div class="flex-container">
-                          <% if (current_user != events[i].owner) { %>
+                          <% if ((current_user != events[i].owner) && (events[i].followers.indexOf(current_user) < 0)) { %>
                             <div class="row">
                               <form method="post" action="/events/subscribe/<%= events[i]._id %>">
                                 <button type="submit" class="btn btn-bora" data-dismiss="modal" onclick="">
