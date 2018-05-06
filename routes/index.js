@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var workspace = require("../controllers/index.js");
-var action = require("../controllers/ActionController.js");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -18,10 +17,6 @@ router.get('/home', function(req, res, next) {
     return;
   }
   res.redirect('/');
-});
-
-router.post('/save/', function(req, res) {
-  workspace.save(req, res);
 });
 
 router.get('/logout', function(req, res) {

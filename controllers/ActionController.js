@@ -15,12 +15,11 @@ actionController.list = function(req, res) {
 
 actionController.search = function(req, res) {
   Action.find({}).exec(function (err, actions) {
-      console.log(actions);
     if (err) {
       console.log("Error:", err);
     }
     else {
-      return actions;
+      res.render("../views/users/myactions", {actions: actions, userid: req.params.id});
     }
   });
 };

@@ -1,0 +1,9 @@
+<div>
+	<form action="/users/myactions/save/<%= userid %>" method="post">
+		<% for(var i=0; i < actions.length; i++) { %>
+			<input type="checkbox" name="<%= actions[i].name%>" checked="<%= actions[i].name%>" />
+				<%= actions[i].name%><br>
+		<% } %>
+		<input type="submit" value="Atualizar">
+	</form>
+</div>

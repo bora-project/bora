@@ -1,0 +1,40 @@
+<h3><a href="/users/create">Create User</a></h3>
+<h1>users List</h1>
+<% if(users.length>0) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Name</th>
+        <th>Slack ID</th>
+        <th>Actions</th>
+        <th>Workspace</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% for(var i=0; i < users.length;i++) { %>
+        <tr>
+          <td><a href="/users/edit/<%= users[i]._id%>">Edit</a></td>
+          <td>
+            <form action="/users/delete/<%= users[i]._id%>" method="post">
+              <button type="submit" href="">Delete</button>
+            </form>
+          </td>
+          <td><%= users[i].name%></td>
+          <td><%= users[i].slack_id%></td>
+          <td>
+                <% console.log(users[i]); %> 
+            <% for(var j=0; j < users[i].actions.length;j++) { %>
+                <%= users[i].actions[j]; %> 
+            <% } %>
+          </td>
+          <td><%= users[i].workspace%></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+<% } else { %>
+  <div>No users found.</div>
+<% } %>
