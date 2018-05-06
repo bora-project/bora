@@ -11,17 +11,24 @@ const slack_events = create_slack_event_adapter(process.env.SLACK_VERIFICATION_T
 
 router.post('/event_api', slack_events.expressMiddleware());
 
-bora_answers = function(event) {
+bora_answers = function(event, message) {
   web.chat.postMessage({ as_user: false, channel: event.channel, text: `Bora lá, <@${event.user}>`})
   .then((res) => {
     console.log('Message sent: ', res.ts);
   })
   .catch(console.error);
 
-  eventController.create_internal(event.text);
+  eventController.create_internal(message);
 };
 
-slack_events.on('app_mention', bora_answers);
+slack_events.on('app_mention', function(event) {
+  var message = event.text;
+  message = message.split(" ");
+  message[0] = "";
+  message = message.join(" ").trim();
+
+  bora_answers(event, message);
+});
 
 slack_events.on('message', function(event){
   if (event.user === undefined)
@@ -29,8 +36,8 @@ slack_events.on('message', function(event){
 
   if (event.text.split(" ")[0].toLowerCase() != 'bora')
     return;
-  
-  bora_answers(event);
+
+  bora_answers(event, event.text);
 });
 
 module.exports = router;
