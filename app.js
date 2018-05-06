@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var slackRouter = require('./slack/challenge');
+var slackRouter = require('./routes/slack');
 
 var app = express();
 
