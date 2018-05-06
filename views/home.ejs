@@ -10,6 +10,7 @@
   <title><%= title %></title>
 
   <link rel='stylesheet' href='/stylesheets/home.css' />
+  <link rel='stylesheet' href='/stylesheets/timeline.css' />
   <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 
@@ -20,10 +21,35 @@
     <div class="row">
       <div class="col-md-8">
         <div class="card-timeline">
+          <div class="row ">
+            <div class="col-md-12 top-margin" >
+              <div >
+                <ul class="timeline">
+                  <li>
+                    <i class="fa fa-at bg-blue"></i>
+                    <div class="timeline-item">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h3 class="timeline-header"><a href="#">Jogar Ping Pong as 14h</a> </h3>
+                      <div class="timeline-body">
+                        Ta suavão agora? Então aceita esse desafio ae!!
+                      </div>
+                      <div class='timeline-footer inline-block'>
+                        <div class="flex-container">
+                          <div class="row">
+                            <a class="btn btn-bora">Bora!</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
 
+          </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 side-menu">
         <div class="card-ranking col-md-12">
           <h4><i class="fas fa-trophy"></i> Ranking</h4>
           <div class="content-slider">
@@ -65,10 +91,14 @@
   <div id="container-floating">
 
     <div class="nd3 nds" data-toggle="tooltip" data-placement="left" data-original-title="Reminder">
-      <i class="fas fa-user icons-menu"></i>
+      <a type="button" data-toggle="modal" data-target="#profile">
+        <i class="fas fa-user icons-menu"></i>
+      </a>
     </div>
     <div class="nd1 nds" data-toggle="tooltip" data-placement="left" data-original-title="Edoardo@live.it"><img class="reminder">
-      <i class="fas fa-sign-out-alt icons-menu"></i>
+      <a href="#">
+        <i class="fas fa-sign-out-alt icons-menu"></i>
+      </a>
     </div>
 
     <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" onclick="newmail()">
@@ -77,9 +107,43 @@
 
   </div>
 
+  <div class="modal fade" id="profile" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Meus interesses</h4>
+        </div>
+        <div class="modal-body">
+          <form action="" method="post">
+            <div class="form-group">
+              <select class="form-control" name="" multiple="multiple">
+                <option value="cheese">Cheese</option>
+                <option value="tomatoes">Tomatoes</option>
+                <option value="mozarella">Mozzarella</option>
+                <option value="mushrooms">Mushrooms</option>
+                <option value="pepperoni">Pepperoni</option>
+                <option value="onions">Onions</option>
+              </select>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 
 <script src="/js/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#example-getting-started').multiselect();
+});
+</script>
+</script>
 <script src="/bootstrap/js/bootstrap.js"></script>
 
 </html>
