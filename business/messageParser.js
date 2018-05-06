@@ -51,7 +51,7 @@ messageParams.parse = function(inputMsg) {
 					"followers": []
 				};
 
-	var timeRegex = /^([0-9]|0[0-9]|1[0-9]|2[0-3])(?:(?:h|:)([0-5][0-9])?)?$/;
+	var timeRegex = /^([0-9]|0[0-9]|1[0-9]|2[0-3])(?:h|:)([0-5][0-9])?$/;
 	var dateRegex = /^([0-9]|0[0-9]|1[0-9]|2[0-9]|3[0-1])(?:\/|\-|\.)([0-9]|0[0-9]|1[0-2])(?:(?:\/|\-|\.)(\d\d(?:\d\d)?)?)?$/;
 
 	for (var i = msg.length - 1; i > commandIndex; i--) {
