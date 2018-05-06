@@ -17,15 +17,15 @@ router.get('/redirect', function(req, res, next) {
   var redirect_url = '/slack/redirect';
 
   web.oauth.access({ code: code, client_id: client_id, client_secret: client_secret })
-  .then((res) => {
-    console.log('O TOKEN: ', res.access_token);
-    console.log(res.access_token == process.env.SLACK_OAUTH_ACCESS_TOKEN);
-    console.log(res);
+  .then((result) => {
+    if (result.access_token == process.env.SLACK_OAUTH_ACCESS_TOKEN) {
+      req.session.user_logged = true; // GENERATE_HASH_TOKEN
+      res.redirect('/home');
+    } else {
+      res.redirect('/');
+    }
   })
   .catch(console.error);
-
-  res.status(200);
-  res.send('OK');
 });
 
 bora_answers = function(event, message) {
