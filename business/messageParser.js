@@ -50,7 +50,7 @@ messageParams.parse = function(inputMsg) {
 		if (timeRegex.test(msg[i])) {
 			var timeArray = timeRegex.exec(msg[i]);
 
-			if (timeArray[2] == undefined) {
+			if (timeArray[2] === undefined) {
 				params["time"] = String(timeArray[1]) + ":00";
 			}
 			else {
@@ -59,14 +59,15 @@ messageParams.parse = function(inputMsg) {
 		}
 		// se o parametro bater a regex de data
 		else if (dateRegex.test(msg[i])) {
-			var day = dateRegex.exec(msg[i])[1];
-			var month = dateRegex.exec(msg[i])[2];
-			var year = dateRegex.exec(msg[i])[3];
+			var dt = dateRegex.exec(msg[i]);
+			var day = dt[1];
+			var month = dt[2];
+			var year = dt[3];
 
+			if (year === undefined)
+				year = getToday().substring(6);
 			if (year.length == 2)
 				year = "20" + year;
-			else if (year == undefined)
-				year = getToday().substring(6);
 
 			if (day.length == 1)
 				day = "0" + day;
@@ -78,8 +79,14 @@ messageParams.parse = function(inputMsg) {
 		}
 		// se nao der match em data nem horario
 		else {
-			if (msg[i].toLowerCase() != "bora" && msg[i].toLowerCase() != "@bora")
-				params["txt"] = msg[i] + " " + params["txt"];
+			if (msg[i].toLowerCase() != "bora" && msg[i].toLowerCase() != "@bora"){
+				if (params["txt"] != ""){
+					params["txt"] = msg[i] + " " + params["txt"];
+				}
+				else {
+					params["txt"] = msg[i];
+				}
+			}
 		}
 	}
 

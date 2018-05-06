@@ -1,0 +1,27 @@
+<h3><a href="/events/create">Create Event</a></h3>
+<h1>Events List</h1>
+<% if(events.length>0) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Action</th>
+        <th>What else</th>
+        <th>Date</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% for(var i=0; i<events.length;i++) { %>
+        <tr>
+          <td><%= events[i].action%></a></td>
+          <td><%= events[i].txt%></a></td>
+          <td><%= events[i].date%></td>
+          <td><%= events[i].time%></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+<% } else { %>
+  <div>No events found.</div>
+<% } %>
